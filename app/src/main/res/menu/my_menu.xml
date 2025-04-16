@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="Exit"
+        android:title=""
+        android:icon="@drawable/exit"
         android:id="@+id/exit"
         android:orderInCategory="10"
+
         />
     <item
-        android:title="Home Page"
+        android:title=""
+        android:icon="@drawable/home"
         android:id="@+id/home"
         android:orderInCategory="20"
         />
     <item
-        android:title="Cart"
+        android:title=""
+        android:icon="@drawable/cart"
         android:id="@+id/page1"
         android:orderInCategory="30"
+
         />
 
 </menu>
