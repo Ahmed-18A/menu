@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,33 +20,42 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     Dialog d;
-    int x=0;
+    int x = 0;
     AlertDialog dialog2;
     TextView text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        text = findViewById(R.id.text);
+
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isAdmin = prefs.getBoolean("isAdmin", false);
+        if (isAdmin) {
+            text.setText("Hello admin");
+            x = 1;
+        }
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id =item.getItemId();
-                if(id==R.id.page1)
+                int id = item.getItemId();
+                if (id == R.id.page1)
                     cart();
-                if(id==R.id.out)
-                    if (x==1)
+                if (id == R.id.out)
+                    if (x == 1)
                         createLogoutDialog().show();
                     else
                         Toast.makeText(MainActivity.this, "you aren't logged in", Toast.LENGTH_SHORT).show();
-                if(id==R.id.in)
+                if (id == R.id.in)
                     d.show();
                 return true;
             }
         });
 
-        text=findViewById(R.id.text);
         d = new Dialog(this);
         d.setContentView(R.layout.custom_dialog);
         EditText name = d.findViewById(R.id.name);
@@ -53,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         Button log = d.findViewById(R.id.log);
         Button cancel = d.findViewById(R.id.cancel);
         d.setCancelable(true);
+
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,14 +71,16 @@ public class MainActivity extends AppCompatActivity {
                 String password = pass.getText().toString();
                 if (username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Please fill in both fields", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     if (username.equals("admin") && password.equals("admin")) {
                         text.setText("Hello admin");
                         d.dismiss();
-                        x=1;
-                    }
-                    else {
+                        x = 1;
+
+                        SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
+                        editor.putBoolean("isAdmin", true);
+                        editor.apply();
+                    } else {
                         Toast.makeText(MainActivity.this, "wrong info", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -80,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 d.dismiss();
             }
         });
-
-
     }
 
     private AlertDialog.Builder createLogoutDialog() {
@@ -100,22 +111,23 @@ public class MainActivity extends AppCompatActivity {
                 dialogInterface.dismiss();
             }
         });
-
         return builder;
     }
 
     public void cart() {
-        if(x==1) {
+        if (x == 1) {
             Intent intent = new Intent(MainActivity.this, MainActivity2.class);
             startActivity(intent);
             finish();
-        }
-        else
+        } else
             Toast.makeText(this, "you must be logged in", Toast.LENGTH_SHORT).show();
     }
 
-    public void out(){
+    public void out() {
         text.setText("Hello user");
-        x=0;
+        x = 0;
+        SharedPreferences.Editor editor = getSharedPreferences("MyPrefs", MODE_PRIVATE).edit();
+        editor.putBoolean("isAdmin", false);
+        editor.apply();
     }
 }
