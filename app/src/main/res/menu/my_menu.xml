@@ -19,14 +19,12 @@
         android:icon="@drawable/cart"
         android:id="@+id/page1"
         android:orderInCategory="30"
-
         />
     <item
         android:title=""
         android:icon="@drawable/logout"
         android:id="@+id/out"
         android:orderInCategory="40"
-
         />
 
 </menu>
