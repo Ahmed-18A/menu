@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,12 +24,15 @@ public class MainActivity extends AppCompatActivity {
     int x = 0;
     AlertDialog dialog2;
     TextView text;
+    public static FrameLayout login, home, cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+    }
+}
+/*
         text = findViewById(R.id.text);
 
         SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -130,4 +134,5 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean("isAdmin", false);
         editor.apply();
     }
-}
+    */
+
