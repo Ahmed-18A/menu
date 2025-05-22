@@ -21,7 +21,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
+        /*
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
@@ -32,11 +32,14 @@ public class MainActivity2 extends AppCompatActivity {
                 return true;
             }
         });
-    }
 
+         */
+    }
+    /*
     public void backToMain() {
         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
+     */
 }

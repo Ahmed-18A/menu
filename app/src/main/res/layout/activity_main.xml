@@ -7,25 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<!--
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Hello user"
-        android:textSize="25sp" />
 
-    <TextView
-        android:layout_marginTop="70dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Home Page"
-        android:textSize="50sp" />
--->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,7 +28,6 @@
         android:id="@+id/frag_cart"
         android:layout_above="@id/bottom_navigation"
         />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

@@ -4,26 +4,26 @@
     <item
         android:title=""
         android:icon="@drawable/login"
-        android:id="@+id/in"
+        android:id="@+id/mnu_in"
         android:orderInCategory="10"
 
         />
     <item
         android:title=""
         android:icon="@drawable/home"
-        android:id="@+id/home"
+        android:id="@+id/mnu_home"
         android:orderInCategory="20"
         />
     <item
         android:title=""
         android:icon="@drawable/cart"
-        android:id="@+id/page1"
+        android:id="@+id/mnu_cart"
         android:orderInCategory="30"
         />
     <item
         android:title=""
         android:icon="@drawable/logout"
-        android:id="@+id/out"
+        android:id="@+id/mnu_out"
         android:orderInCategory="40"
         />
 
